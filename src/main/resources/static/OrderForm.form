@@ -1,0 +1,48 @@
+{
+  "components": [
+    {
+      "values": [
+        {
+          "label": "DELL",
+          "value": "dell"
+        },
+        {
+          "label": "HP",
+          "value": "hp"
+        }
+      ],
+      "label": "Wanted Product",
+      "type": "select",
+      "layout": {
+        "row": "Row_0v9d2q4",
+        "columns": 5
+      },
+      "id": "Field_05x46m5",
+      "key": "product",
+      "searchable": false,
+      "defaultValue": "<none>",
+      "readonly": false
+    },
+    {
+      "label": "Quantity",
+      "type": "number",
+      "layout": {
+        "row": "Row_0zkq8cs",
+        "columns": 5
+      },
+      "id": "Field_0ztsaho",
+      "key": "quantity",
+      "defaultValue": 1,
+      "decimalDigits": 0
+    }
+  ],
+  "type": "default",
+  "id": "Form_1tfo8ar",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.15.2"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.19.0",
+  "schemaVersion": 10
+}

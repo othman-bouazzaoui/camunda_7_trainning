@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0" id="Definitions_0fr9mxs" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.15.2">
+  <bpmn:process id="PROCESS_NOTIFICATION" name="process notification" isExecutable="true" camunda:historyTimeToLive="180">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="firstName" label="First Name" type="string" />
+          <camunda:formField id="lastName" label="Last Name" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>Flow_0fxv9vf</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="EndEvent_0x6ir2l">
+      <bpmn:incoming>Flow_1ogrtwg</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="ACTIVITY_NOTIFY" name="Notify that&#39;s something wrong" camunda:delegateExpression="${notifyProcessor}">
+      <bpmn:incoming>Flow_0fxv9vf</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ogrtwg</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1ogrtwg" sourceRef="ACTIVITY_NOTIFY" targetRef="EndEvent_0x6ir2l" />
+    <bpmn:sequenceFlow id="Flow_0fxv9vf" sourceRef="StartEvent_1" targetRef="ACTIVITY_NOTIFY" />
+  </bpmn:process>
+  <bpmn:error id="Error_1omv403" />
+  <bpmn:error id="Error_0hur6pz" name="check Product Error" errorCode="check Product Error" camunda:errorMessage="check Product Error" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="PROCESS_NOTIFICATION">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="152" y="92" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_0x6ir2l_di" bpmnElement="EndEvent_0x6ir2l">
+        <dc:Bounds x="482" y="92" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1kx5v0c_di" bpmnElement="ACTIVITY_NOTIFY" bioc:stroke="#6b3c00" bioc:fill="#ffe0b2" color:background-color="#ffe0b2" color:border-color="#6b3c00">
+        <dc:Bounds x="280" y="70" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1ogrtwg_di" bpmnElement="Flow_1ogrtwg">
+        <di:waypoint x="380" y="110" />
+        <di:waypoint x="482" y="110" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0fxv9vf_di" bpmnElement="Flow_0fxv9vf">
+        <di:waypoint x="188" y="110" />
+        <di:waypoint x="280" y="110" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
