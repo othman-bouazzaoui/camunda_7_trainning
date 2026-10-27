@@ -14,6 +14,11 @@
       <bpmn:incoming>Flow_1ogrtwg</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:serviceTask id="ACTIVITY_ORDER" name="Command Process" camunda:delegateExpression="${orderTreatProcessor}">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="test">testValue</camunda:inputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_1qh5lbj</bpmn:incoming>
       <bpmn:outgoing>Flow_1ogrtwg</bpmn:outgoing>
     </bpmn:serviceTask>

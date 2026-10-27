@@ -14,14 +14,17 @@ http://localhost:9099/camunda/app/welcome/default/#!/welcome
 
 ### Errors
 
-ERROR EVENT END pour soulever une erreurs au process superieur
-ERROR EVENT BOUNDARY il est utiliser pour catcher l'exception
+ERROR EVENT END : will throw the exception
+ERROR EVENT BOUNDARY : will catch the exception
 
 
 ### End point Rest
 http://localhost:9099/engine-rest
 
-### To Test
+### Test scenario
 1 - start [taskList](http://localhost:9099/camunda/app/tasklist/default/)  
-2 - start process ``process ordering``  
-3 - observe logs in back
+2 - start process ``process ordering``
+![Start Procces](./docs/1.png)
+![Start Procces](./docs/2.png)
+![Start Procces](./docs/3.png)
+3 - observe logs in back end

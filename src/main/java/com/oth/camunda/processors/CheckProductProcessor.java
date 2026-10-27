@@ -1,24 +1,25 @@
-package com.oth.camunda;
+package com.oth.camunda.processors;
 
+import com.oth.camunda.AbstractProcessor;
 import org.camunda.bpm.engine.RuntimeService;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
-import org.camunda.bpm.engine.delegate.JavaDelegate;
-import org.camunda.bpm.engine.test.assertions.bpmn.ProcessDefinitionAssert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.Map;
 
 /**
  * author : Othman BOUAZZAOUI
  */
 
 @Component
-public class CheckProductProcessor implements JavaDelegate {
+public class CheckProductProcessor extends AbstractProcessor {
 
 	@Autowired
 	private RuntimeService runtimeService;
 
 	@Override
-	public void execute(DelegateExecution execution) {
+	protected Map<String, String> processVariables(DelegateExecution execution) {
 		System.out.println("Hello I am in " + CheckProductProcessor.class.getSimpleName());
 		execution.getVariables().forEach((s, o) -> System.out.println("key=" + s + " value=" + o));
 		execution.setVariable("errorWhenCheckProduct", "false");
@@ -30,6 +31,6 @@ public class CheckProductProcessor implements JavaDelegate {
 			//Run this process on the background
 			runtimeService.startProcessInstanceByKey("PROCESS_NOTIFICATION");
 		}
-
+		return Map.of("PROCESS_CLASS_NAME", this.getClass().getSimpleName());
 	}
 }
